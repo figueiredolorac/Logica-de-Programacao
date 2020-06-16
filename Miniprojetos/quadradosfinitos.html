@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+
+<canvas width = "600" height = "400"> </canvas>
+
+<script>
+
+	function desenhaQuadrado(x, y, cor){
+
+		var tela = document.querySelector("canvas");
+		var pincel = tela.getContext('2d'); // Dar um pincel em 2D
+
+		pincel.fillStyle = cor; // Determinar a cor
+		pincel.fillRect(x, y, 50, 50); // Preencher o objeto
+		pincel.fillStroke = 'black'; // Determina a cor da borda
+		pincel.strokeRect(x, y, 50, 50); // Desenha a borda
+
+	}
+
+	var x = 0;
+
+	while(x < 600) {
+
+		desenhaQuadrado(x, 0, 'green');
+		x = x + 50;
+	}
+	
+</script>		

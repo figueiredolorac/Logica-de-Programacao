@@ -1,0 +1,97 @@
+<!-- A função document.querySelector (atenção S maiusculo) utilizada para inserir
+ aquilo que está no mundo HTML na variável input, receberá como parametro da tag
+ que desejamos utilizar
+ button.onclick (em português "onclick" significa "no clicar",
+ seja feita ao clique)
+ A tag </input> cria caixa de texto no mundo HTML
+no mundo HTML podemos criar botões através da tag <button> </button> 
+ input.focus(); representa em dar foco a caixa de texto
+ "variavel".length ( no array) ele informa qual tamanho dele
+ função "variavel".push , empurra para dentro do array conteudo    -->
+
+
+
+<meta charset="UTF-8">
+
+<input/>
+
+<button>Compare com o meu segredo</button>
+
+<script>
+
+	function sorteia(){
+
+		return Math.round(Math.random() * 10);
+	}
+
+	function sorteiaNumeros(quantidade){
+
+		var segredos = [];
+
+		var numero = 1;
+
+		while (numero <= quantidade){
+
+			var numeroAleatorio = sorteia();
+
+			if(numeroAleatorio !== 0){
+
+				var achou = false;
+
+				for (var posicao = 0; posicao < segredos.length; posicao++){
+
+					if(segredos[posicao] == numeroAleatorio) {
+
+						achou = true;
+						break;
+					}
+				}
+
+				if (achou == false){
+
+					segredos.push(numeroAleatorio);
+
+					numero++;
+				}
+			}	
+		}
+		return segredos;
+	}
+	
+	var segredos = sorteiaNumeros(5);
+
+	var input = document.querySelector("input");
+
+	input.focus();
+
+	function verifica(){
+
+		var achou = false;
+
+		for (var posicao = 0; posicao < segredos.length; posicao++) {
+
+			if (input.value == segredos[posicao]) {
+
+				alert("Você acertou!!!");
+
+				achou = true;
+				
+				break;
+			}
+
+			if (achou == false){
+
+				alert("Você errou");
+
+			}
+		}
+	}
+
+	input.value = "";
+	input.focus();	
+		
+	var button = document.querySelector("button");
+
+	button.onclick = verifica;
+
+</script>
